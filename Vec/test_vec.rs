@@ -16,6 +16,12 @@ pub  fn test_vec_int(){
     println!("First element is {:?}",my_ints.get(10));
 }
 
+#[derive(Clone,Debug)]
+struct Car{
+    manufacturer:String,
+    model: String
+}
+
 pub fn test_vec_string(){
    let first_names:Vec<&str> =vec!["Trevor","Nancy","Shanono","Billy","Rachel"];
 
@@ -24,4 +30,19 @@ pub fn test_vec_string(){
    }
 
    println!("{:?}",first_names);
+}
+
+pub fn test_vec_car(){
+    let car_list:Vec<Car> = vec![Car{manufacturer:"Toyota".to_string(),model:"car".to_string()};10];
+    for car in car_list {
+        println!("manufacturer:{},model{}",car.manufacturer,car.model);
+    }
+
+    let mut car_list2:Vec<Car> = vec![];
+
+    for _ in 1..100u8{
+        car_list2.push(Car{manufacturer:"Toyota".to_string(),model:"car".to_string()})
+    }
+
+    println!("{:?}",car_list2);
 }
