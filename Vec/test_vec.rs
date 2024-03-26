@@ -33,16 +33,20 @@ pub fn test_vec_string(){
 }
 
 pub fn test_vec_car(){
-    let car_list:Vec<Car> = vec![Car{manufacturer:"Toyota".to_string(),model:"car".to_string()};10];
-    for car in car_list {
+    let mut car_list:Vec<Car> = vec![Car{manufacturer:"Toyota".to_string(),model:"car".to_string()};10];
+    for car in &car_list {
         println!("manufacturer:{},model{}",car.manufacturer,car.model);
     }
 
     let mut car_list2:Vec<Car> = vec![];
 
-    for _ in 1..100u8{
-        car_list2.push(Car{manufacturer:"Toyota".to_string(),model:"car".to_string()})
+    for _ in 1..=100u8{
+        car_list2.push(Car{manufacturer:"Toyota".to_string(),model:"car".to_string()});
     }
 
-    println!("{:?}",car_list2);
+    car_list.append(&mut car_list2);
+    car_list.insert(0,Car{manufacturer:"BMW".to_string(),model:"car".to_string()});
+
+   
+    println!("{:?}",car_list.get(101));
 }
